@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✍️ Write • Earn • WFH</title>
+
+  <!-- META PIXEL (with event tracking) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1450692206862625');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1450692206862625&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- END META PIXEL -->
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5eef4;
+      font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+      padding: 1.2rem;
+    }
+
+    .card {
+      max-width: 720px;
+      width: 100%;
+      background: #ffffffdd;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 56px;
+      padding: 2.4rem 2rem 2rem;
+      box-shadow: 0 25px 40px rgba(170, 80, 130, 0.15),
+                  0 6px 16px rgba(190, 100, 140, 0.08);
+      border: 1px solid #ffffffaa;
+      text-align: center;
+      transition: 0.2s;
+    }
+
+    /* LOGO */
+    .logo-wrap {
+      margin-bottom: 0.6rem;
+    }
+    .logo-wrap img {
+      max-height: 70px;
+      width: auto;
+      border-radius: 40px;
+      box-shadow: 0 6px 14px rgba(160, 70, 120, 0.10);
+      background: white;
+      padding: 0.2rem 0.8rem 0.2rem 0.6rem;
+      border: 1px solid #ffe2f0;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #ffddec;
+      color: #8f3e72;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.3rem 1.6rem;
+      border-radius: 60px;
+      letter-spacing: 0.4px;
+      border: 1px solid #fcc2db;
+      margin-bottom: 0.8rem;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #281c2b;
+      line-height: 1.1;
+      letter-spacing: -0.3px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #b15489, #d475ab);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .sub-line {
+      font-size: 1.1rem;
+      color: #4b3445;
+      background: #fcecf4;
+      padding: 0.2rem 1.8rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin: 0.3rem 0 1.2rem;
+      border: 1px solid #fad2e6;
+      font-weight: 500;
+    }
+
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.2rem;
+      margin: 1.2rem 0 1.8rem;
+    }
+    .info-grid span {
+      background: #faf0f6;
+      padding: 0.2rem 1.4rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #3d2a38;
+      border: 1px solid #f7d0e1;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .info-grid span::before {
+      content: "✦";
+      color: #c75f94;
+      font-weight: 700;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.8rem 0 1.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0.8rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      background: white;
+      color: #281c2b;
+      border: 1px solid #ffe0ef;
+      box-shadow: 0 8px 18px rgba(180, 80, 130, 0.08);
+      transition: 0.2s ease;
+      flex: 1 0 auto;
+      min-width: 150px;
+    }
+
+    .btn-primary {
+      background: #d86a9d;
+      color: white;
+      border: 1px solid #e683b5;
+      box-shadow: 0 12px 24px rgba(200, 80, 140, 0.20);
+    }
+    .btn-primary:hover {
+      background: #c35387;
+      transform: scale(1.02);
+      box-shadow: 0 16px 30px rgba(190, 70, 130, 0.30);
+    }
+
+    .btn-telegram {
+      background: #2aabee;
+      color: white;
+      border: 1px solid #4db9f5;
+      box-shadow: 0 12px 24px rgba(42, 171, 238, 0.20);
+    }
+    .btn-telegram:hover {
+      background: #1b8fd1;
+      transform: scale(1.02);
+      box-shadow: 0 16px 30px rgba(30, 140, 210, 0.30);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(4px);
+      border: 1px solid #dbb0c7;
+    }
+    .btn-outline:hover {
+      background: white;
+      transform: scale(1.02);
+    }
+
+    .pixel-badge {
+      margin-top: 1.6rem;
+      font-size: 0.7rem;
+      color: #6f4b64;
+      background: #f9e6f0;
+      padding: 0.3rem 1.4rem;
+      border-radius: 60px;
+      display: inline-block;
+      border: 1px solid #f7c7dd;
+    }
+    .pixel-badge span {
+      font-weight: 600;
+      color: #a24a7a;
+    }
+
+    .footer-channel {
+      margin-top: 1.4rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: #5f4257;
+    }
+    .footer-channel span {
+      background: #fcf0f6;
+      padding: 0.2rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid #f5d0e2;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #f2b8d2, transparent);
+      margin: 1.2rem 0 0.6rem;
+      opacity: 0.4;
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 1.8rem 1rem; }
+      h1 { font-size: 2.1rem; }
+      .btn { min-width: 130px; padding: 0.7rem 1.4rem; font-size: 0.95rem; }
+      .logo-wrap img { max-height: 55px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- LOGO (from your link) -->
+  <div class="logo-wrap">
+    <img src="https://karanmetalabe.com/wp-content/uploads/2026/05/download-36.jpg" alt="Writing WFH logo" />
+  </div>
+
+  <div class="badge">✍️ only for girls · work from home</div>
+
+  <h1>
+    <span class="gradient-text">Write</span> &amp; earn<br />
+    <span style="font-size: 2.2rem;">💸 online · flexible</span>
+  </h1>
+
+  <div class="sub-line">🕒 easy work · daily pay</div>
+
+  <div class="info-grid">
+    <span>flexible timing</span>
+    <span>easy work</span>
+    <span>for girls</span>
+  </div>
+
+  <!-- TWO MAIN BUTTONS (Subscribe + Telegram) -->
+  <div class="btn-group">
+    <a href="#" class="btn btn-primary" id="subscribeBtn">📩 Subscribe</a>
+    <a href="https://t.me/+x_wzGXt0bnA1YzM1" target="_blank" class="btn btn-telegram" id="telegramBtn">📱 Join Telegram</a>
+  </div>
+
+  <!-- extra small CTA (still a button but secondary) -->
+  <div style="margin-top: 0.2rem;">
+    <a href="#" class="btn btn-outline" style="min-width: 120px; font-size:0.9rem;" id="secondaryBtn">✨ I'm interested</a>
+  </div>
+
+  <!-- pixel & channel info -->
+  <div class="pixel-badge">
+    <span>🔵 Meta Pixel active</span> · event: PageView &amp; Subscribe
+  </div>
+
+  <hr />
+  <div class="footer-channel">
+    <span>📢 t.me/+x_wzGXt0bnA1YzM1</span>
+    <span>⚡ pixel: 1450692206862625</span>
+  </div>
+
+</div>
+
+<!-- PIXEL SUBSCRIBE + TELEGRAM TRACKING -->
+<script>
+  (function() {
+    // track subscribe (custom event)
+    function trackSubscribe() {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Subscribe', { source: 'landing', button: 'subscribe' });
+        console.log('✅ Pixel: Subscribe event');
+        alert('🎉 Subscribed! You\'re on the list.');
+      } else {
+        alert('📩 Thanks! (Pixel not loaded)');
+      }
+    }
+
+    // track telegram click (custom event)
+    function trackTelegram() {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'CustomEvent', { event_name: 'telegram_click', channel: 'writing_wfh' });
+        console.log('✅ Pixel: Telegram click tracked');
+      }
+      // allow navigation
+    }
+
+    // track secondary button
+    function trackSecondary() {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'CustomEvent', { event_name: 'interested_click' });
+        console.log('✅ Pixel: Interested click');
+      }
+      alert('✨ Great! We\'ll keep you updated.');
+    }
+
+    // --- attach events ---
+    const subBtn = document.getElementById('subscribeBtn');
+    if (subBtn) {
+      subBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        trackSubscribe();
+      });
+    }
+
+    const teleBtn = document.getElementById('telegramBtn');
+    if (teleBtn) {
+      teleBtn.addEventListener('click', function() {
+        trackTelegram();
+        // let href open
+      });
+    }
+
+    const secBtn = document.getElementById('secondaryBtn');
+    if (secBtn) {
+      secBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        trackSecondary();
+      });
+    }
+
+    // extra: custom page loaded event
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'CustomEvent', { event_name: 'page_ready' });
+    }
+
+    console.log('🚀 Landing ready · Pixel ID 1450692206862625');
+  })();
+</script>
+
+</body>
+</html>
