@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>✍️ Write • Earn • WFH</title>
 
-  <!-- META PIXEL (with event tracking) -->
+  <!-- META PIXEL (COMPLETE WITH EVENT TRACKING) -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -159,6 +159,7 @@
       transition: 0.2s ease;
       flex: 1 0 auto;
       min-width: 150px;
+      cursor: pointer;
     }
 
     .btn-primary {
@@ -290,69 +291,202 @@
 
 </div>
 
-<!-- PIXEL SUBSCRIBE + TELEGRAM TRACKING -->
+<!-- COMPLETE PIXEL TRACKING WITH ALL EVENTS -->
 <script>
   (function() {
-    // track subscribe (custom event)
-    function trackSubscribe() {
+    // Helper function to track all events
+    function trackEvent(eventName, params = {}) {
       if (typeof fbq !== 'undefined') {
-        fbq('track', 'Subscribe', { source: 'landing', button: 'subscribe' });
-        console.log('✅ Pixel: Subscribe event');
-        alert('🎉 Subscribed! You\'re on the list.');
+        fbq('track', eventName, {
+          ...params,
+          eventID: eventName + '_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6)
+        });
+        console.log(`✅ Pixel: ${eventName} tracked`, params);
+        return true;
       } else {
-        alert('📩 Thanks! (Pixel not loaded)');
+        console.warn(`⚠️ Pixel not available for ${eventName}`);
+        return false;
       }
     }
 
-    // track telegram click (custom event)
+    // Track Subscribe button click
+    function trackSubscribe() {
+      trackEvent('Subscribe', { 
+        source: 'landing_page', 
+        button: 'subscribe_main',
+        location: 'main_cta'
+      });
+      alert('🎉 Subscribed! You\'re on the list.');
+    }
+
+    // Track Telegram button click
     function trackTelegram() {
-      if (typeof fbq !== 'undefined') {
-        fbq('track', 'CustomEvent', { event_name: 'telegram_click', channel: 'writing_wfh' });
-        console.log('✅ Pixel: Telegram click tracked');
-      }
-      // allow navigation
+      trackEvent('CustomEvent', { 
+        event_name: 'telegram_click', 
+        channel: 'writing_wfh',
+        button: 'telegram_main',
+        location: 'main_cta'
+      });
+      // Allow navigation to Telegram
     }
 
-    // track secondary button
-    function trackSecondary() {
-      if (typeof fbq !== 'undefined') {
-        fbq('track', 'CustomEvent', { event_name: 'interested_click' });
-        console.log('✅ Pixel: Interested click');
-      }
+    // Track Interested button click
+    function trackInterested() {
+      trackEvent('CustomEvent', { 
+        event_name: 'interested_click',
+        button: 'interested_secondary',
+        location: 'secondary_cta'
+      });
       alert('✨ Great! We\'ll keep you updated.');
     }
 
-    // --- attach events ---
+    // --- ATTACH EVENT LISTENERS ---
+    
+    // 1. Subscribe Button (Main)
     const subBtn = document.getElementById('subscribeBtn');
     if (subBtn) {
       subBtn.addEventListener('click', function(e) {
         e.preventDefault();
         trackSubscribe();
+        // Additional button click tracking
+        trackEvent('ButtonClick', { 
+          button: 'subscribe', 
+          location: 'main',
+          action: 'subscribe'
+        });
       });
     }
 
+    // 2. Telegram Button (Main)
     const teleBtn = document.getElementById('telegramBtn');
     if (teleBtn) {
-      teleBtn.addEventListener('click', function() {
+      teleBtn.addEventListener('click', function(e) {
         trackTelegram();
-        // let href open
+        trackEvent('ButtonClick', { 
+          button: 'telegram', 
+          location: 'main',
+          action: 'join_channel'
+        });
+        // Allow navigation
       });
     }
 
+    // 3. Interested Button (Secondary)
     const secBtn = document.getElementById('secondaryBtn');
     if (secBtn) {
       secBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        trackSecondary();
+        trackInterested();
+        trackEvent('ButtonClick', { 
+          button: 'interested', 
+          location: 'secondary',
+          action: 'interest'
+        });
       });
     }
 
-    // extra: custom page loaded event
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'CustomEvent', { event_name: 'page_ready' });
-    }
+    // 4. Track all link clicks on page
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a');
+      if (target && target.href && !target.href.startsWith('#')) {
+        trackEvent('CustomEvent', {
+          event_name: 'link_click',
+          url: target.href,
+          text: target.innerText.trim() || 'link',
+          target: target.target || '_self'
+        });
+      }
+    });
 
-    console.log('🚀 Landing ready · Pixel ID 1450692206862625');
+    // 5. Track scroll depth (25%, 50%, 75%, 100%)
+    let scrollTracked = {
+      '25': false,
+      '50': false,
+      '75': false,
+      '100': false
+    };
+
+    window.addEventListener('scroll', function() {
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      
+      if (scrollPercent >= 25 && !scrollTracked['25']) {
+        scrollTracked['25'] = true;
+        trackEvent('CustomEvent', { event_name: 'scroll_25_percent', percent: 25 });
+      }
+      if (scrollPercent >= 50 && !scrollTracked['50']) {
+        scrollTracked['50'] = true;
+        trackEvent('CustomEvent', { event_name: 'scroll_50_percent', percent: 50 });
+      }
+      if (scrollPercent >= 75 && !scrollTracked['75']) {
+        scrollTracked['75'] = true;
+        trackEvent('CustomEvent', { event_name: 'scroll_75_percent', percent: 75 });
+      }
+      if (scrollPercent >= 99 && !scrollTracked['100']) {
+        scrollTracked['100'] = true;
+        trackEvent('CustomEvent', { event_name: 'scroll_100_percent', percent: 100 });
+      }
+    });
+
+    // 6. Track time on page (10 seconds, 30 seconds, 1 minute, 2 minutes)
+    let timeTracked = {
+      '10': false,
+      '30': false,
+      '60': false,
+      '120': false
+    };
+
+    setTimeout(() => {
+      if (!timeTracked['10']) {
+        timeTracked['10'] = true;
+        trackEvent('CustomEvent', { event_name: 'time_on_page_10s', seconds: 10 });
+      }
+    }, 10000);
+
+    setTimeout(() => {
+      if (!timeTracked['30']) {
+        timeTracked['30'] = true;
+        trackEvent('CustomEvent', { event_name: 'time_on_page_30s', seconds: 30 });
+      }
+    }, 30000);
+
+    setTimeout(() => {
+      if (!timeTracked['60']) {
+        timeTracked['60'] = true;
+        trackEvent('CustomEvent', { event_name: 'time_on_page_60s', seconds: 60 });
+      }
+    }, 60000);
+
+    setTimeout(() => {
+      if (!timeTracked['120']) {
+        timeTracked['120'] = true;
+        trackEvent('CustomEvent', { event_name: 'time_on_page_120s', seconds: 120 });
+      }
+    }, 120000);
+
+    // 7. Track page ready with additional data
+    trackEvent('CustomEvent', { 
+      event_name: 'page_ready',
+      page: 'writing_landing',
+      timestamp: new Date().toISOString(),
+      user_agent: navigator.userAgent,
+      screen_width: window.innerWidth,
+      screen_height: window.innerHeight
+    });
+
+    // 8. Track when user leaves the page (beforeunload)
+    window.addEventListener('beforeunload', function() {
+      trackEvent('CustomEvent', { 
+        event_name: 'page_exit',
+        time_spent: Math.round((Date.now() - pageLoadTime) / 1000) + 's'
+      });
+    });
+
+    // Store page load time
+    const pageLoadTime = Date.now();
+
+    console.log('🚀 Landing page ready with complete tracking');
+    console.log('📊 Tracking events: PageView, Subscribe, Telegram, Interested, Link Clicks, Scroll Depth, Time on Page, Page Exit');
+    console.log('📌 Pixel ID: 1450692206862625');
   })();
 </script>
 
