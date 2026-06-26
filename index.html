@@ -138,27 +138,27 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      margin: 1.8rem 0 1.4rem;
+      gap: 1.2rem;
+      margin: 2rem 0 1.4rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 0.8rem 2.2rem;
+      gap: 12px;
+      padding: 1rem 2.8rem;
       border-radius: 60px;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 1.1rem;
       text-decoration: none;
       background: white;
       color: #281c2b;
       border: 1px solid #ffe0ef;
       box-shadow: 0 8px 18px rgba(180, 80, 130, 0.08);
-      transition: 0.2s ease;
+      transition: 0.3s ease;
       flex: 1 0 auto;
-      min-width: 150px;
+      min-width: 180px;
       cursor: pointer;
     }
 
@@ -166,34 +166,24 @@
       background: #d86a9d;
       color: white;
       border: 1px solid #e683b5;
-      box-shadow: 0 12px 24px rgba(200, 80, 140, 0.20);
+      box-shadow: 0 12px 24px rgba(200, 80, 140, 0.25);
     }
     .btn-primary:hover {
       background: #c35387;
-      transform: scale(1.02);
-      box-shadow: 0 16px 30px rgba(190, 70, 130, 0.30);
+      transform: scale(1.03);
+      box-shadow: 0 16px 30px rgba(190, 70, 130, 0.35);
     }
 
     .btn-telegram {
       background: #2aabee;
       color: white;
       border: 1px solid #4db9f5;
-      box-shadow: 0 12px 24px rgba(42, 171, 238, 0.20);
+      box-shadow: 0 12px 24px rgba(42, 171, 238, 0.25);
     }
     .btn-telegram:hover {
       background: #1b8fd1;
-      transform: scale(1.02);
-      box-shadow: 0 16px 30px rgba(30, 140, 210, 0.30);
-    }
-
-    .btn-outline {
-      background: rgba(255,255,255,0.6);
-      backdrop-filter: blur(4px);
-      border: 1px solid #dbb0c7;
-    }
-    .btn-outline:hover {
-      background: white;
-      transform: scale(1.02);
+      transform: scale(1.03);
+      box-shadow: 0 16px 30px rgba(30, 140, 210, 0.35);
     }
 
     .pixel-badge {
@@ -235,10 +225,35 @@
       opacity: 0.4;
     }
 
+    .success-msg {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 0.8rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 1px solid #c3e6cb;
+      font-weight: 500;
+      animation: fadeIn 0.5s ease;
+    }
+    .success-msg.show {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 480px) {
       .card { padding: 1.8rem 1rem; }
       h1 { font-size: 2.1rem; }
-      .btn { min-width: 130px; padding: 0.7rem 1.4rem; font-size: 0.95rem; }
+      .btn { 
+        min-width: 140px; 
+        padding: 0.8rem 1.8rem; 
+        font-size: 1rem;
+        flex: 1 1 100%;
+      }
       .logo-wrap img { max-height: 55px; }
     }
   </style>
@@ -247,7 +262,7 @@
 
 <div class="card">
 
-  <!-- LOGO (from your link) -->
+  <!-- LOGO -->
   <div class="logo-wrap">
     <img src="https://karanmetalabe.com/wp-content/uploads/2026/05/download-36.jpg" alt="Writing WFH logo" />
   </div>
@@ -267,20 +282,27 @@
     <span>for girls</span>
   </div>
 
-  <!-- TWO MAIN BUTTONS (Subscribe + Telegram) -->
+  <!-- Success Message -->
+  <div id="successMsg" class="success-msg">
+    ✅ Great! Joining Telegram channel...
+  </div>
+
+  <!-- ONLY 2 BUTTONS - BOTH JOIN TELEGRAM -->
   <div class="btn-group">
-    <a href="#" class="btn btn-primary" id="subscribeBtn">📩 Subscribe</a>
-    <a href="https://t.me/+x_wzGXt0bnA1YzM1" target="_blank" class="btn btn-telegram" id="telegramBtn">📱 Join Telegram</a>
+    <!-- Button 1: Join Telegram (Primary) -->
+    <a href="https://t.me/+x_wzGXt0bnA1YzM1" target="_blank" class="btn btn-primary" id="joinBtn1">
+      📱 Join Telegram Channel
+    </a>
+    
+    <!-- Button 2: Join Telegram (Telegram Style) -->
+    <a href="https://t.me/+x_wzGXt0bnA1YzM1" target="_blank" class="btn btn-telegram" id="joinBtn2">
+      ✈️ Join Now
+    </a>
   </div>
 
-  <!-- extra small CTA (still a button but secondary) -->
-  <div style="margin-top: 0.2rem;">
-    <a href="#" class="btn btn-outline" style="min-width: 120px; font-size:0.9rem;" id="secondaryBtn">✨ I'm interested</a>
-  </div>
-
-  <!-- pixel & channel info -->
+  <!-- Pixel & channel info -->
   <div class="pixel-badge">
-    <span>🔵 Meta Pixel active</span> · event: PageView &amp; Subscribe
+    <span>🔵 Meta Pixel active</span> · event: PageView &amp; Join Telegram
   </div>
 
   <hr />
@@ -309,96 +331,82 @@
       }
     }
 
-    // Track Subscribe button click
-    function trackSubscribe() {
-      trackEvent('Subscribe', { 
-        source: 'landing_page', 
-        button: 'subscribe_main',
-        location: 'main_cta'
-      });
-      alert('🎉 Subscribed! You\'re on the list.');
+    // Show success message
+    function showSuccess() {
+      const msg = document.getElementById('successMsg');
+      if (msg) {
+        msg.classList.add('show');
+        setTimeout(() => {
+          msg.classList.remove('show');
+        }, 4000);
+      }
     }
 
-    // Track Telegram button click
-    function trackTelegram() {
+    // Track Join Telegram click
+    function trackJoinTelegram(buttonName) {
       trackEvent('CustomEvent', { 
-        event_name: 'telegram_click', 
+        event_name: 'join_telegram_click',
+        button: buttonName,
         channel: 'writing_wfh',
-        button: 'telegram_main',
-        location: 'main_cta'
+        action: 'join_channel'
       });
-      // Allow navigation to Telegram
+      trackEvent('ButtonClick', { 
+        button: buttonName, 
+        action: 'join_telegram'
+      });
+      // Track as Subscribe event too (for conversion tracking)
+      trackEvent('Subscribe', { 
+        source: 'landing_page',
+        button: buttonName,
+        method: 'telegram'
+      });
+      showSuccess();
     }
 
-    // Track Interested button click
-    function trackInterested() {
-      trackEvent('CustomEvent', { 
-        event_name: 'interested_click',
-        button: 'interested_secondary',
-        location: 'secondary_cta'
-      });
-      alert('✨ Great! We\'ll keep you updated.');
-    }
-
-    // --- ATTACH EVENT LISTENERS ---
+    // --- ATTACH EVENT LISTENERS TO BOTH BUTTONS ---
     
-    // 1. Subscribe Button (Main)
-    const subBtn = document.getElementById('subscribeBtn');
-    if (subBtn) {
-      subBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        trackSubscribe();
-        // Additional button click tracking
-        trackEvent('ButtonClick', { 
-          button: 'subscribe', 
-          location: 'main',
-          action: 'subscribe'
-        });
+    // Button 1: Join Telegram (Primary)
+    const btn1 = document.getElementById('joinBtn1');
+    if (btn1) {
+      btn1.addEventListener('click', function(e) {
+        trackJoinTelegram('join_telegram_primary');
+        // Link opens Telegram naturally
       });
     }
 
-    // 2. Telegram Button (Main)
-    const teleBtn = document.getElementById('telegramBtn');
-    if (teleBtn) {
-      teleBtn.addEventListener('click', function(e) {
-        trackTelegram();
-        trackEvent('ButtonClick', { 
-          button: 'telegram', 
-          location: 'main',
-          action: 'join_channel'
-        });
-        // Allow navigation
+    // Button 2: Join Telegram (Telegram Style)
+    const btn2 = document.getElementById('joinBtn2');
+    if (btn2) {
+      btn2.addEventListener('click', function(e) {
+        trackJoinTelegram('join_telegram_secondary');
+        // Link opens Telegram naturally
       });
     }
 
-    // 3. Interested Button (Secondary)
-    const secBtn = document.getElementById('secondaryBtn');
-    if (secBtn) {
-      secBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        trackInterested();
-        trackEvent('ButtonClick', { 
-          button: 'interested', 
-          location: 'secondary',
-          action: 'interest'
-        });
-      });
-    }
-
-    // 4. Track all link clicks on page
+    // 3. Track all link clicks on page
     document.addEventListener('click', function(e) {
       const target = e.target.closest('a');
       if (target && target.href && !target.href.startsWith('#')) {
-        trackEvent('CustomEvent', {
-          event_name: 'link_click',
-          url: target.href,
-          text: target.innerText.trim() || 'link',
-          target: target.target || '_self'
-        });
+        // Check if it's our Telegram link
+        if (target.href.includes('t.me/+x_wzGXt0bnA1YzM1')) {
+          trackEvent('CustomEvent', {
+            event_name: 'telegram_link_click',
+            url: target.href,
+            text: target.innerText.trim() || 'Telegram Link',
+            target: target.target || '_self'
+          });
+        } else {
+          trackEvent('CustomEvent', {
+            event_name: 'link_click',
+            url: target.href,
+            text: target.innerText.trim() || 'link',
+            target: target.target || '_self'
+          });
+        }
       }
     });
 
-    // 5. Track scroll depth (25%, 50%, 75%, 100%)
+    // 4. Track scroll depth
     let scrollTracked = {
       '25': false,
       '50': false,
@@ -427,7 +435,7 @@
       }
     });
 
-    // 6. Track time on page (10 seconds, 30 seconds, 1 minute, 2 minutes)
+    // 5. Track time on page
     let timeTracked = {
       '10': false,
       '30': false,
@@ -463,7 +471,7 @@
       }
     }, 120000);
 
-    // 7. Track page ready with additional data
+    // 6. Track page ready
     trackEvent('CustomEvent', { 
       event_name: 'page_ready',
       page: 'writing_landing',
@@ -473,7 +481,7 @@
       screen_height: window.innerHeight
     });
 
-    // 8. Track when user leaves the page (beforeunload)
+    // 7. Track page exit
     window.addEventListener('beforeunload', function() {
       trackEvent('CustomEvent', { 
         event_name: 'page_exit',
@@ -481,12 +489,12 @@
       });
     });
 
-    // Store page load time
     const pageLoadTime = Date.now();
 
-    console.log('🚀 Landing page ready with complete tracking');
-    console.log('📊 Tracking events: PageView, Subscribe, Telegram, Interested, Link Clicks, Scroll Depth, Time on Page, Page Exit');
+    console.log('🚀 Landing page ready - 2 JOIN TELEGRAM BUTTONS');
+    console.log('📊 Tracking: PageView, Join Telegram, Link Clicks, Scroll, Time on Page');
     console.log('📌 Pixel ID: 1450692206862625');
+    console.log('🔗 Telegram: https://t.me/+x_wzGXt0bnA1YzM1');
   })();
 </script>
 
