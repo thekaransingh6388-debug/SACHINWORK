@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✍️ Write • Earn • WFH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Prince Free Fire Store</title>
 
-  <!-- META PIXEL (COMPLETE WITH EVENT TRACKING) -->
+  <!-- META PIXEL (exactly as provided) -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -28,475 +28,514 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
     }
 
     body {
+      background: #0b0d0f;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: #f5eef4;
-      font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
-      padding: 1.2rem;
+      padding: 24px 16px 40px;
     }
 
-    .card {
-      max-width: 720px;
+    .landing-card {
+      max-width: 520px;
       width: 100%;
-      background: #ffffffdd;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-radius: 56px;
-      padding: 2.4rem 2rem 2rem;
-      box-shadow: 0 25px 40px rgba(170, 80, 130, 0.15),
-                  0 6px 16px rgba(190, 100, 140, 0.08);
-      border: 1px solid #ffffffaa;
-      text-align: center;
-      transition: 0.2s;
+      background: linear-gradient(145deg, #14171c, #1c2026);
+      border-radius: 48px 48px 32px 32px;
+      padding: 30px 24px 40px;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 215, 0, 0.12);
+      border: 1px solid rgba(255, 200, 50, 0.15);
     }
 
-    /* LOGO */
-    .logo-wrap {
-      margin-bottom: 0.6rem;
-    }
-    .logo-wrap img {
-      max-height: 70px;
-      width: auto;
-      border-radius: 40px;
-      box-shadow: 0 6px 14px rgba(160, 70, 120, 0.10);
-      background: white;
-      padding: 0.2rem 0.8rem 0.2rem 0.6rem;
-      border: 1px solid #ffe2f0;
+    /* ----- PRINCE header (exactly as asked: button below name) ----- */
+    .store-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 18px;
     }
 
-    .badge {
+    .logo-wrapper {
+      background: #1e232b;
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1px solid #f5b81b;
+      box-shadow: 0 0 24px rgba(245, 184, 27, 0.15);
+      margin-bottom: 12px;
       display: inline-block;
-      background: #ffddec;
-      color: #8f3e72;
-      font-weight: 600;
-      font-size: 0.8rem;
-      padding: 0.3rem 1.6rem;
-      border-radius: 60px;
-      letter-spacing: 0.4px;
-      border: 1px solid #fcc2db;
-      margin-bottom: 0.8rem;
     }
 
-    h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: #281c2b;
-      line-height: 1.1;
-      letter-spacing: -0.3px;
+    .logo-img {
+      height: 64px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
     }
-    .gradient-text {
-      background: linear-gradient(135deg, #b15489, #d475ab);
-      background-clip: text;
+
+    /* PRINCE name – big & golden */
+    .store-name {
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #f9d976, #f5b81b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      display: inline-block;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(245, 184, 27, 0.25);
+      margin-top: 2px;
+      line-height: 1.1;
     }
 
-    .sub-line {
-      font-size: 1.1rem;
-      color: #4b3445;
-      background: #fcecf4;
-      padding: 0.2rem 1.8rem;
-      border-radius: 60px;
-      display: inline-block;
-      margin: 0.3rem 0 1.2rem;
-      border: 1px solid #fad2e6;
-      font-weight: 500;
+    .sub-badge {
+      background: #252b34;
+      border-radius: 40px;
+      padding: 6px 22px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #b9c4d0;
+      border: 1px solid #3d444e;
+      margin-top: 6px;
+      letter-spacing: 0.6px;
     }
 
-    .info-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem 1.2rem;
-      margin: 1.2rem 0 1.8rem;
-    }
-    .info-grid span {
-      background: #faf0f6;
-      padding: 0.2rem 1.4rem;
-      border-radius: 60px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #3d2a38;
-      border: 1px solid #f7d0e1;
+    /* --- TOP JOIN TG BUTTON – placed directly under "PRINCE" name --- */
+    .btn-telegram-top {
       display: flex;
       align-items: center;
-      gap: 5px;
+      justify-content: center;
+      gap: 14px;
+      background: linear-gradient(135deg, #1f8cfa, #0a6bd1);
+      border: none;
+      border-radius: 60px;
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: white;
+      width: 100%;
+      max-width: 340px;
+      margin: 14px auto 6px;
+      box-shadow: 0 8px 20px rgba(31, 140, 250, 0.35);
+      transition: all 0.15s ease;
+      cursor: pointer;
+      border: 1px solid #66b0ff;
+      text-decoration: none;
+      letter-spacing: 0.5px;
     }
-    .info-grid span::before {
-      content: "✦";
-      color: #c75f94;
+
+    .btn-telegram-top:active {
+      transform: scale(0.96);
+      box-shadow: 0 4px 12px rgba(31, 140, 250, 0.3);
+    }
+
+    .btn-telegram-top i {
+      font-size: 1.6rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    /* rest of the UI */
+    .hero-tagline {
+      text-align: center;
+      color: #d2dae3;
+      font-weight: 400;
+      font-size: 1rem;
+      margin: 18px 0 12px;
+      background: rgba(255, 215, 0, 0.04);
+      padding: 10px 16px;
+      border-radius: 60px;
+      border: 1px dashed #f5b81b44;
+    }
+
+    .hero-tagline span {
+      color: #f5b81b;
       font-weight: 700;
     }
 
-    .btn-group {
+    .id-grid {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.2rem;
-      margin: 2rem 0 1.4rem;
+      flex-direction: column;
+      gap: 18px;
+      margin: 24px 0 28px;
     }
 
-    .btn {
-      display: inline-flex;
+    .id-card {
+      background: #1b2028;
+      border-radius: 28px;
+      padding: 16px 20px;
+      border-left: 5px solid #f5b81b;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #2f3640;
+      transition: 0.1s;
+    }
+
+    .id-card-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .id-level {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.3px;
+    }
+
+    .id-level small {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #a0abb8;
+      margin-left: 6px;
+    }
+
+    .id-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      background: #262e39;
+      padding: 4px 14px 4px 10px;
+      border-radius: 40px;
+      color: #d4dce6;
+      border: 1px solid #3e4855;
+      width: fit-content;
+    }
+
+    .id-badge i {
+      color: #f5b81b;
+      font-weight: 700;
+    }
+
+    .stars {
+      color: #f5b81b;
+      letter-spacing: 2px;
+      font-size: 0.8rem;
+    }
+
+    .id-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .id-tag {
+      background: #2c3542;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: #bcc8d6;
+      text-transform: uppercase;
+      border: 1px solid #4a5563;
+    }
+
+    .id-price-tag {
+      margin-top: 6px;
+      font-weight: 700;
+      color: #f5b81b;
+      font-size: 1rem;
+      background: #1f262f;
+      padding: 2px 14px;
+      border-radius: 30px;
+      border: 1px solid #f5b81b55;
+    }
+
+    .price-range-big {
+      background: #1b2129;
+      border-radius: 60px;
+      padding: 12px 20px;
+      text-align: center;
+      margin: 8px 0 22px;
+      border: 1px solid #f5b81b44;
+      font-weight: 700;
+      color: #eaeef3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .price-range-big span {
+      color: #f5b81b;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* BOTTOM TELEGRAM BUTTON */
+    .btn-telegram-bottom {
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      padding: 1rem 2.8rem;
+      gap: 14px;
+      background: linear-gradient(135deg, #1f8cfa, #0a6bd1);
+      border: none;
       border-radius: 60px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-decoration: none;
-      background: white;
-      color: #281c2b;
-      border: 1px solid #ffe0ef;
-      box-shadow: 0 8px 18px rgba(180, 80, 130, 0.08);
-      transition: 0.3s ease;
-      flex: 1 0 auto;
-      min-width: 180px;
+      padding: 18px 20px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: white;
+      width: 100%;
+      max-width: 380px;
+      margin: 24px auto 8px;
+      box-shadow: 0 8px 24px rgba(31, 140, 250, 0.4);
+      transition: all 0.15s ease;
       cursor: pointer;
+      border: 1px solid #66b0ff;
+      text-decoration: none;
+      letter-spacing: 0.5px;
     }
 
-    .btn-primary {
-      background: #d86a9d;
-      color: white;
-      border: 1px solid #e683b5;
-      box-shadow: 0 12px 24px rgba(200, 80, 140, 0.25);
-    }
-    .btn-primary:hover {
-      background: #c35387;
-      transform: scale(1.03);
-      box-shadow: 0 16px 30px rgba(190, 70, 130, 0.35);
+    .btn-telegram-bottom:active {
+      transform: scale(0.96);
+      box-shadow: 0 4px 12px rgba(31, 140, 250, 0.3);
     }
 
-    .btn-telegram {
-      background: #2aabee;
-      color: white;
-      border: 1px solid #4db9f5;
-      box-shadow: 0 12px 24px rgba(42, 171, 238, 0.25);
-    }
-    .btn-telegram:hover {
-      background: #1b8fd1;
-      transform: scale(1.03);
-      box-shadow: 0 16px 30px rgba(30, 140, 210, 0.35);
+    .btn-telegram-bottom i {
+      font-size: 1.8rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     }
 
-    .pixel-badge {
-      margin-top: 1.6rem;
-      font-size: 0.7rem;
-      color: #6f4b64;
-      background: #f9e6f0;
-      padding: 0.3rem 1.4rem;
+    .trust-badge {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 18px;
+      background: #14191f;
+      padding: 12px 14px;
       border-radius: 60px;
-      display: inline-block;
-      border: 1px solid #f7c7dd;
-    }
-    .pixel-badge span {
-      font-weight: 600;
-      color: #a24a7a;
+      margin: 18px 0 6px;
+      border: 1px solid #2e3742;
+      color: #a5b3c2;
+      font-size: 0.78rem;
+      font-weight: 500;
     }
 
-    .footer-channel {
-      margin-top: 1.4rem;
+    .trust-badge span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-badge i {
+      color: #f5b81b;
+      font-size: 1rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #5c6a7a;
+      font-size: 0.8rem;
+      margin-top: 22px;
+      border-top: 1px solid #262e38;
+      padding-top: 18px;
+    }
+
+    .footer-note strong {
+      color: #c0cedc;
+      font-weight: 600;
+    }
+
+    .event-badge {
       display: flex;
       justify-content: center;
-      gap: 1.2rem;
+      gap: 16px;
+      margin: 12px 0 8px;
       flex-wrap: wrap;
-      font-size: 0.75rem;
-      color: #5f4257;
-    }
-    .footer-channel span {
-      background: #fcf0f6;
-      padding: 0.2rem 1.2rem;
-      border-radius: 60px;
-      border: 1px solid #f5d0e2;
     }
 
-    hr {
-      border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #f2b8d2, transparent);
-      margin: 1.2rem 0 0.6rem;
-      opacity: 0.4;
+    .event-badge span {
+      background: #1f2630;
+      padding: 6px 20px;
+      border-radius: 40px;
+      color: #b0c0d0;
+      font-size: 0.7rem;
+      border: 1px solid #3b4553;
+      letter-spacing: 0.3px;
     }
 
-    .success-msg {
-      display: none;
-      background: #d4edda;
-      color: #155724;
-      padding: 0.8rem;
-      border-radius: 12px;
-      margin: 1rem 0;
-      border: 1px solid #c3e6cb;
-      font-weight: 500;
-      animation: fadeIn 0.5s ease;
-    }
-    .success-msg.show {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 480px) {
-      .card { padding: 1.8rem 1rem; }
-      h1 { font-size: 2.1rem; }
-      .btn { 
-        min-width: 140px; 
-        padding: 0.8rem 1.8rem; 
-        font-size: 1rem;
-        flex: 1 1 100%;
+    @media (max-width: 440px) {
+      .id-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
-      .logo-wrap img { max-height: 55px; }
+      .id-right {
+        align-items: flex-start;
+        width: 100%;
+      }
+      .store-name {
+        font-size: 2.2rem;
+      }
+      .btn-telegram-top, .btn-telegram-bottom {
+        font-size: 1.1rem;
+        padding: 14px 16px;
+      }
+      .price-range-big span {
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
 <body>
+<div class="landing-card">
 
-<div class="card">
+  <!-- HEADER: LOGO + "PRINCE" + TOP TG BUTTON (exactly below name) -->
+  <div class="store-header">
+    <div class="logo-wrapper">
+      <img class="logo-img" src="https://karanmetalabe.com/wp-content/uploads/2026/07/ChatGPT-Image-Jul-1-2026-10_18_18-AM.png" alt="Prince Store Logo" loading="lazy" />
+    </div>
+    <div class="store-name">PRINCE</div>
+    <div class="sub-badge">🔥 FREE FIRE STORE 🔥</div>
 
-  <!-- LOGO -->
-  <div class="logo-wrap">
-    <img src="https://karanmetalabe.com/wp-content/uploads/2026/05/download-36.jpg" alt="Writing WFH logo" />
-  </div>
-
-  <div class="badge">✍️ only for girls · work from home</div>
-
-  <h1>
-    <span class="gradient-text">Write</span> &amp; earn<br />
-    <span style="font-size: 2.2rem;">💸 online · flexible</span>
-  </h1>
-
-  <div class="sub-line">🕒 easy work · daily pay</div>
-
-  <div class="info-grid">
-    <span>flexible timing</span>
-    <span>easy work</span>
-    <span>for girls</span>
-  </div>
-
-  <!-- Success Message -->
-  <div id="successMsg" class="success-msg">
-    ✅ Great! Joining Telegram channel...
-  </div>
-
-  <!-- ONLY 2 BUTTONS - BOTH JOIN TELEGRAM -->
-  <div class="btn-group">
-    <!-- Button 1: Join Telegram (Primary) -->
-    <a href="https://t.me/+x_wzGXt0bnA1YzM1" target="_blank" class="btn btn-primary" id="joinBtn1">
-      📱 Join Telegram Channel
-    </a>
-    
-    <!-- Button 2: Join Telegram (Telegram Style) -->
-    <a href="https://t.me/+x_wzGXt0bnA1YzM1" target="_blank" class="btn btn-telegram" id="joinBtn2">
-      ✈️ Join Now
+    <!-- 🔽 TOP JOIN TG BUTTON – right under "PRINCE" name 🔽 -->
+    <a href="https://t.me/+jWUnrBwNJgBhYzE1" target="_blank" rel="noopener noreferrer"
+       class="btn-telegram-top"
+       onclick="fbq('track', 'JoinTGTop', {channel: 'PrinceFreeFireStore', position: 'top'});">
+      <span>📲</span> JOIN TELEGRAM CHANNEL <span>📲</span>
     </a>
   </div>
 
-  <!-- Pixel & channel info -->
-  <div class="pixel-badge">
-    <span>🔵 Meta Pixel active</span> · event: PageView &amp; Join Telegram
+  <!-- tagline -->
+  <div class="hero-tagline">
+    ⚡ <span>PREMIUM ID COLLECTION</span> ⚡ <br> RARE BUNDLES • HEROIC EMBLEM
   </div>
 
-  <hr />
-  <div class="footer-channel">
-    <span>📢 t.me/+x_wzGXt0bnA1YzM1</span>
-    <span>⚡ pixel: 1450692206862625</span>
+  <!-- ID cards -->
+  <div class="id-grid">
+    <div class="id-card">
+      <div class="id-card-left">
+        <div class="id-level">Lv.78 <small>BR-RANKED</small></div>
+        <div class="id-badge"><i>✦</i> HEROIC EMBLEM <span class="stars">★★★★★</span></div>
+      </div>
+      <div class="id-right">
+        <div class="id-tag">PREMIUM</div>
+        <div class="id-price-tag">₹ 999</div>
+      </div>
+    </div>
+
+    <div class="id-card">
+      <div class="id-card-left">
+        <div class="id-level">Lv.72 <small>BR-RANKED</small></div>
+        <div class="id-badge"><i>✦</i> HEROIC EMBLEM <span class="stars">★★★★★</span></div>
+      </div>
+      <div class="id-right">
+        <div class="id-tag">RARE</div>
+        <div class="id-price-tag">₹ 1499</div>
+      </div>
+    </div>
+
+    <div class="id-card">
+      <div class="id-card-left">
+        <div class="id-level">Lv.68 <small>BR-RANKED</small></div>
+        <div class="id-badge"><i>✦</i> HEROIC EMBLEM <span class="stars">★★★★★</span></div>
+      </div>
+      <div class="id-right">
+        <div class="id-tag">COLLECTOR</div>
+        <div class="id-price-tag">₹ 1999</div>
+      </div>
+    </div>
   </div>
 
+  <!-- price range -->
+  <div class="price-range-big">
+    <span>💰</span> PRICE <span>₹ 999 – ₹ 1999</span> <span>💰</span>
+  </div>
+
+  <!-- trust badges -->
+  <div class="trust-badge">
+    <span>✅ 100% SAFE</span>
+    <span>⚡ FAST DELIVERY</span>
+    <span>🛡️ TRUSTED SELLER</span>
+    <span>⏳ 24/7 SUPPORT</span>
+  </div>
+
+  <!-- BOTTOM JOIN TG BUTTON (second) -->
+  <a href="https://t.me/+jWUnrBwNJgBhYzE1" target="_blank" rel="noopener noreferrer"
+     class="btn-telegram-bottom"
+     onclick="fbq('track', 'JoinTGBottom', {channel: 'PrinceFreeFireStore', position: 'bottom'});">
+    <span>📲</span> JOIN TELEGRAM CHANNEL <span>📲</span>
+  </a>
+
+  <!-- event / subscribe / pixel visual badges (with click tracking) -->
+  <div class="event-badge">
+    <span id="subscribeBadge">🔔 SUBSCRIBE</span>
+    <span id="pixelBadge">🎯 PIXEL ACTIVE</span>
+  </div>
+
+  <!-- footer -->
+  <div class="footer-note">
+    <strong>PRINCE FREE FIRE STORE</strong> &nbsp;|&nbsp; ONLY FOR LEGENDS <br>
+    <span style="font-size: 0.7rem; opacity: 0.7;">© 2026 • INSTANT DELIVERY • 100% SAFE</span>
+  </div>
 </div>
 
-<!-- COMPLETE PIXEL TRACKING WITH ALL EVENTS -->
+<!-- additional event tracking: subscribe, pixel, ID cards, price, trust -->
 <script>
   (function() {
-    // Helper function to track all events
-    function trackEvent(eventName, params = {}) {
-      if (typeof fbq !== 'undefined') {
-        fbq('track', eventName, {
-          ...params,
-          eventID: eventName + '_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6)
-        });
-        console.log(`✅ Pixel: ${eventName} tracked`, params);
-        return true;
-      } else {
-        console.warn(`⚠️ Pixel not available for ${eventName}`);
-        return false;
-      }
-    }
-
-    // Show success message
-    function showSuccess() {
-      const msg = document.getElementById('successMsg');
-      if (msg) {
-        msg.classList.add('show');
-        setTimeout(() => {
-          msg.classList.remove('show');
-        }, 4000);
-      }
-    }
-
-    // Track Join Telegram click
-    function trackJoinTelegram(buttonName) {
-      trackEvent('CustomEvent', { 
-        event_name: 'join_telegram_click',
-        button: buttonName,
-        channel: 'writing_wfh',
-        action: 'join_channel'
-      });
-      trackEvent('ButtonClick', { 
-        button: buttonName, 
-        action: 'join_telegram'
-      });
-      // Track as Subscribe event too (for conversion tracking)
-      trackEvent('Subscribe', { 
-        source: 'landing_page',
-        button: buttonName,
-        method: 'telegram'
-      });
-      showSuccess();
-    }
-
-    // --- ATTACH EVENT LISTENERS TO BOTH BUTTONS ---
-    
-    // Button 1: Join Telegram (Primary)
-    const btn1 = document.getElementById('joinBtn1');
-    if (btn1) {
-      btn1.addEventListener('click', function(e) {
-        trackJoinTelegram('join_telegram_primary');
-        // Link opens Telegram naturally
-      });
-    }
-
-    // Button 2: Join Telegram (Telegram Style)
-    const btn2 = document.getElementById('joinBtn2');
-    if (btn2) {
-      btn2.addEventListener('click', function(e) {
-        trackJoinTelegram('join_telegram_secondary');
-        // Link opens Telegram naturally
-      });
-    }
-
-    // 3. Track all link clicks on page
-    document.addEventListener('click', function(e) {
-      const target = e.target.closest('a');
-      if (target && target.href && !target.href.startsWith('#')) {
-        // Check if it's our Telegram link
-        if (target.href.includes('t.me/+x_wzGXt0bnA1YzM1')) {
-          trackEvent('CustomEvent', {
-            event_name: 'telegram_link_click',
-            url: target.href,
-            text: target.innerText.trim() || 'Telegram Link',
-            target: target.target || '_self'
-          });
-        } else {
-          trackEvent('CustomEvent', {
-            event_name: 'link_click',
-            url: target.href,
-            text: target.innerText.trim() || 'link',
-            target: target.target || '_self'
-          });
+    // Subscribe badge click
+    const sub = document.getElementById('subscribeBadge');
+    if (sub) {
+      sub.addEventListener('click', function() {
+        if (typeof fbq === 'function') {
+          fbq('track', 'SubscribeClick', { badge: 'subscribe', channel: 'PrinceFreeFireStore' });
         }
-      }
-    });
+      });
+    }
 
-    // 4. Track scroll depth
-    let scrollTracked = {
-      '25': false,
-      '50': false,
-      '75': false,
-      '100': false
-    };
+    // Pixel badge click
+    const pix = document.getElementById('pixelBadge');
+    if (pix) {
+      pix.addEventListener('click', function() {
+        if (typeof fbq === 'function') {
+          fbq('track', 'PixelBadgeClick', { badge: 'pixel', channel: 'PrinceFreeFireStore' });
+        }
+      });
+    }
 
-    window.addEventListener('scroll', function() {
-      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      
-      if (scrollPercent >= 25 && !scrollTracked['25']) {
-        scrollTracked['25'] = true;
-        trackEvent('CustomEvent', { event_name: 'scroll_25_percent', percent: 25 });
-      }
-      if (scrollPercent >= 50 && !scrollTracked['50']) {
-        scrollTracked['50'] = true;
-        trackEvent('CustomEvent', { event_name: 'scroll_50_percent', percent: 50 });
-      }
-      if (scrollPercent >= 75 && !scrollTracked['75']) {
-        scrollTracked['75'] = true;
-        trackEvent('CustomEvent', { event_name: 'scroll_75_percent', percent: 75 });
-      }
-      if (scrollPercent >= 99 && !scrollTracked['100']) {
-        scrollTracked['100'] = true;
-        trackEvent('CustomEvent', { event_name: 'scroll_100_percent', percent: 100 });
-      }
-    });
-
-    // 5. Track time on page
-    let timeTracked = {
-      '10': false,
-      '30': false,
-      '60': false,
-      '120': false
-    };
-
-    setTimeout(() => {
-      if (!timeTracked['10']) {
-        timeTracked['10'] = true;
-        trackEvent('CustomEvent', { event_name: 'time_on_page_10s', seconds: 10 });
-      }
-    }, 10000);
-
-    setTimeout(() => {
-      if (!timeTracked['30']) {
-        timeTracked['30'] = true;
-        trackEvent('CustomEvent', { event_name: 'time_on_page_30s', seconds: 30 });
-      }
-    }, 30000);
-
-    setTimeout(() => {
-      if (!timeTracked['60']) {
-        timeTracked['60'] = true;
-        trackEvent('CustomEvent', { event_name: 'time_on_page_60s', seconds: 60 });
-      }
-    }, 60000);
-
-    setTimeout(() => {
-      if (!timeTracked['120']) {
-        timeTracked['120'] = true;
-        trackEvent('CustomEvent', { event_name: 'time_on_page_120s', seconds: 120 });
-      }
-    }, 120000);
-
-    // 6. Track page ready
-    trackEvent('CustomEvent', { 
-      event_name: 'page_ready',
-      page: 'writing_landing',
-      timestamp: new Date().toISOString(),
-      user_agent: navigator.userAgent,
-      screen_width: window.innerWidth,
-      screen_height: window.innerHeight
-    });
-
-    // 7. Track page exit
-    window.addEventListener('beforeunload', function() {
-      trackEvent('CustomEvent', { 
-        event_name: 'page_exit',
-        time_spent: Math.round((Date.now() - pageLoadTime) / 1000) + 's'
+    // ID card clicks (view event)
+    document.querySelectorAll('.id-card').forEach((card, idx) => {
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('a')) return;
+        const level = this.querySelector('.id-level')?.innerText?.trim() || 'Lv.??';
+        if (typeof fbq === 'function') {
+          fbq('track', 'ViewIDCard', { id_level: level, position: idx+1 });
+        }
       });
     });
 
-    const pageLoadTime = Date.now();
+    // Price range click
+    const priceEl = document.querySelector('.price-range-big');
+    if (priceEl) {
+      priceEl.addEventListener('click', function() {
+        if (typeof fbq === 'function') {
+          fbq('track', 'PriceRangeClick', { range: '999-1999' });
+        }
+      });
+    }
 
-    console.log('🚀 Landing page ready - 2 JOIN TELEGRAM BUTTONS');
-    console.log('📊 Tracking: PageView, Join Telegram, Link Clicks, Scroll, Time on Page');
-    console.log('📌 Pixel ID: 1450692206862625');
-    console.log('🔗 Telegram: https://t.me/+x_wzGXt0bnA1YzM1');
+    // Trust badge clicks
+    document.querySelectorAll('.trust-badge span').forEach((el) => {
+      el.addEventListener('click', function() {
+        const txt = this.innerText.trim();
+        if (typeof fbq === 'function') {
+          fbq('track', 'TrustBadgeClick', { badge: txt });
+        }
+      });
+    });
+
+    console.log('✅ Prince Free Fire Store — tracking + 2 TG buttons ready');
   })();
 </script>
 
+<!-- extra note: both join buttons fire fbq events (JoinTGTop / JoinTGBottom) -->
 </body>
 </html>
